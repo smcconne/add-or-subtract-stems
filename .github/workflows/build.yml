@@ -29,11 +29,14 @@ jobs:
       - name: Build with PyInstaller
         run: pyinstaller "Add or Subtract Stems.spec" --noconfirm
 
+      - name: Zip artifact for release
+        run: Compress-Archive -Path "dist\Add or Subtract Stems.exe" -DestinationPath "dist\Add-or-Subtract-Stems-Windows.zip"
+
       - name: Upload Windows artifact
         uses: actions/upload-artifact@v4
         with:
           name: Add-or-Subtract-Stems-Windows
-          path: dist/Add or Subtract Stems.exe
+          path: dist/Add-or-Subtract-Stems-Windows.zip
 
   build-macos:
     runs-on: macos-latest
@@ -69,11 +72,14 @@ jobs:
       - name: Build with PyInstaller
         run: pyinstaller "Add or Subtract Stems_mac.spec" --noconfirm
 
+      - name: Zip artifact for release
+        run: cd dist && zip -r Add-or-Subtract-Stems-macOS.zip "Add or Subtract Stems.app"
+
       - name: Upload macOS artifact
         uses: actions/upload-artifact@v4
         with:
           name: Add-or-Subtract-Stems-macOS
-          path: dist/Add or Subtract Stems.app
+          path: dist/Add-or-Subtract-Stems-macOS.zip
 
   build-linux:
     runs-on: ubuntu-latest
@@ -99,11 +105,14 @@ jobs:
       - name: Build with PyInstaller
         run: pyinstaller "Add or Subtract Stems_linux.spec" --noconfirm
 
+      - name: Zip artifact for release
+        run: cd dist && zip Add-or-Subtract-Stems-Linux.zip "Add or Subtract Stems"
+
       - name: Upload Linux artifact
         uses: actions/upload-artifact@v4
         with:
           name: Add-or-Subtract-Stems-Linux
-          path: dist/Add or Subtract Stems
+          path: dist/Add-or-Subtract-Stems-Linux.zip
 
   # Optional: Create a release when a tag is pushed
   release:
