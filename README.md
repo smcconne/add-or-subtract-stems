@@ -10,9 +10,10 @@ A desktop application for combining and subtracting audio stems. Built with Pyth
 
 **Add or Subtract Stems** lets you manipulate audio files by adding (mixing) or subtracting stems from a song. This is useful for:
 
-- **Isolating leftover artifacts** – Most AI stem separation tools leave out pieces of the original audio, meaning if you add the separated stems together they won't sum to equal the input audio, which you can verify with this tool. 
-- **Combining stems** – Mix multiple audio files together, allowing you to (for example) mix leftover artifacts into one of your stems or average the results from multiple algorithms - (for those unaware, -6db = half amplitude, so combining two stems @ -6db is the same as averaging the two stems, useful for averaging the results of two AI algorithms)
-
+- **Isolating leftover artifacts** – The majority of AI stem separation tools leave out pieces of the original audio. Just try adding the separated stems back together, they won't quite equal the input audio - some algorithms leave more out than others but in general AI stems *aren't complete* until you subtract them from the song you started with and spit out what's left. The Subtract Stems part of this tool greatly speeds up this task compared to using a DAW.
+- **Combining stems** – Mix multiple audio files together, allowing you to (for example) mix leftover artifacts back into one of your stems or average the results from multiple algorithms - (for those unaware, -6db = half amplitude, so combining two stems @ -6db is the same as averaging the two stems, useful for averaging the results of two AI algorithms)
+- **Lowering volume before unmixing** – Before running AI stem separation algorithms, you will get better results if you first lower the volume because it helps avoid clipped output audio. To do this quickly and easily, I made it so you can just drag a single file into the Add Stems tab and select how much you want to lower the volume.
+  
 ## Features
 
 ### Add Stems Tab
